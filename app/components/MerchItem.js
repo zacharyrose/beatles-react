@@ -14,7 +14,7 @@ var isEmpty = function(val){
 
 const closeButtonStyle = {
     position: "absolute",
-    background: "url(../images/close.png) 0 0 no-repeat",
+    background: "url(images/close.png) 0 0 no-repeat",
     width: "24px",
     height: "27px",
     display: "block",
@@ -79,7 +79,7 @@ var MerchItem = React.createClass({
     */
 
     //this.props.itemOptions = merchOptions;
-    this.props.selectedOption = merchOptions[0];
+    //this.props.selectedOption = merchOptions[0];
 
     console.log(merchOptions[0], typeof(merchOptions[0]));
 
@@ -134,7 +134,7 @@ var MerchItem = React.createClass({
       style={customStyles} >
 
       <h2>{Item.info_title}</h2>
-      <p><img src={"../images/merch/"+Item.itemdetail}  height={imageheight} width={imagewidth} /></p>
+      <p><img src={"images/merch/"+Item.itemdetail}  height={imageheight} width={imagewidth} /></p>
       <p style={modalDescStyle}>{Item.info_description} </p>
       <a style={closeButtonStyle} onClick={this.closeModal}>close</a>
     </Modal>
@@ -147,12 +147,12 @@ var MerchItem = React.createClass({
     <div className="merchthumb">
 
         <Conditional if={!isEmpty(Item.itemdetail)}>
-          <a className="itemdetail" href={"../images/merch/"+Item.itemdetail} data-width={Item.imagewidth} data-height={Item.imageheight} onClick={this.openModal} >
+          <a className="itemdetail" href={"images/merch/"+Item.itemdetail} data-width={Item.imagewidth} data-height={Item.imageheight} onClick={this.openModal} >
 
             <Conditional if={!isEmpty(Item.thumbnail)}>
-              <img src={"../images/merch/"+ Item.thumbnail} />
+              <img src={"images/merch/"+ Item.thumbnail} />
               <Conditional else>
-                <img src="../images/merch/default_thumb.png" />
+                <img src="images/merch/default_thumb.png" />
               </Conditional>
             </Conditional>
 
@@ -162,9 +162,9 @@ var MerchItem = React.createClass({
           <Conditional else>
 
             <Conditional if={!isEmpty(Item.thumbnail)}>
-              <img src={"../images/merch/"+ Item.thumbnail} />
+              <img src={"images/merch/"+ Item.thumbnail} />
               <Conditional else>
-                <img src="../images/merch/default_thumb.png" />
+                <img src="images/merch/default_thumb.png" />
               </Conditional>
             </Conditional>
 

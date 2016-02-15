@@ -68,11 +68,11 @@ var StoreComponent = React.createClass({
       </div>
 
       <h2> <Link to="/cart/" className="greenlink">
-        <img src="../images/shoppingcart.png" style={shopping_style} vertical-align="middle" />
+        <img src="images//shoppingcart.png" style={shopping_style} vertical-align="middle" />
 
         Cart: <span className="cartHeader">(<span className="simpleCart_quantity"></span> items)</span>
         </Link>
-        <img src="../images/paypal-whitestroke.png" style={paypal_style} vertical-align="middle" />
+        <img src="images//paypal-whitestroke.png" style={paypal_style} vertical-align="middle" />
       </h2>
 
       <div className="merchandise pre-scrollable">
