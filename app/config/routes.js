@@ -10,7 +10,7 @@ module.exports = (
   <Route path="/" component={Main}>
     <IndexRoute component={Home} />
     <Route path="cart" component={Cart} />
-    <Route path="store" component={Shop} />
-    <Route path="store/:type" component={Shop} />
+    <Route path="shop" component={Shop} />
+    <Route path="shop/:type" component={Shop} />
   </Route>
 );

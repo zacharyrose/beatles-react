@@ -10,10 +10,10 @@ var shopping_style = {height: "1.25em", marginRight:".5em"}
 const defaultType="Shirt";
 
 const links = {
-  'Shirts': '/store/:Shirt',
-  'Vinyl': '/store/:Vinyl',
-  'CDs': '/store/:CD',
-  'Patches': '/store/:Patch'
+  'Shirts': '/shop/:Shirt',
+  'Vinyl': '/shop/:Vinyl',
+  'CDs': '/shop/:CD',
+  'Patches': '/shop/:Patch'
 };
 
 class Shop extends React.Component {
@@ -53,7 +53,7 @@ class Shop extends React.Component {
       <article>
 
       <header>
-              <h1>Beatles Store</h1>
+              <h1>Beatles Shop</h1>
 
       </header>
 

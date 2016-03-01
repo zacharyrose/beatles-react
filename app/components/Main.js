@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 const links = {
   'Main': '/',
-  'Store': '/store/',
+  'Shop': '/shop/',
   'Cart': '/cart/'
 };
 
