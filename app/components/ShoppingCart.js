@@ -1,7 +1,8 @@
-var React = require('react');
+  /*import React from 'react';
 
-var ShoppingCart = React.createClass({
-  /*
+class ShoppingCart extends React.Component {
+
+
   getInitialState: function() {
 
     return {
@@ -47,6 +48,6 @@ var ShoppingCart = React.createClass({
   },
 
 
-*/
 
-  });
+}
+*/

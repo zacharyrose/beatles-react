@@ -1,8 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-var Cart = React.createClass({
-  render: function(){
-    return(
+const Cart = () => (
 
       <article>
       <header>
@@ -10,8 +8,6 @@ var Cart = React.createClass({
       </header>
       </article>
 
-    )
-  }
-})
+    );
 
 module.exports = Cart;

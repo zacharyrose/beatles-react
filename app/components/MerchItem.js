@@ -1,10 +1,8 @@
-var React = require('react');
-var classNames = require('classnames');
-var Conditional = require('react-if-comp');
-
-var ReactDOM = require('react-dom');
-var Modal = require('react-modal');
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import classNames from 'classnames';
+import Conditional from 'react-if-comp';
+import Modal from 'react-modal';
 
 var isEmpty = function(val){
   if (val === undefined || val === null) { return true; }
@@ -38,17 +36,26 @@ const customStyles = {
 
 var hide={display:"none"};
 
-var MerchItem = React.createClass({
-  getInitialState: function() {
-    return {
+class MerchItem extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
       modalIsOpen: false
     };
-  },
-  openModal: function(e) {
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.itemClick = this.itemClick.bind(this);
+    this.split_MerchOptions = this.split_MerchOptions.bind(this);
+    this.display_MerchOptions = this.display_MerchOptions.bind(this);
+  }
+
+  openModal(e) {
     e.preventDefault();
     this.setState({modalIsOpen: true});
-  },
-  itemClick: function()
+  }
+
+  itemClick()
   {
     var cartInfo =
     {
@@ -56,21 +63,19 @@ var MerchItem = React.createClass({
       price:this.props.item.info_price,
       type: this.props.item.info_price,
       option: this.props.selectedOption
-
     }
-
     this.props.callbackParent(cartInfo);
-  },
+  }
 
-  closeModal: function() {
+  closeModal() {
     this.setState({
       modalIsOpen: false,
       itemOptions: [],
       selectedOption: ""
     });
-  },
+  }
 
-  split_MerchOptions: function()
+  split_MerchOptions()
   {
     var merchOptions = this.props.item.options.split("|");
     /*
@@ -88,9 +93,9 @@ var MerchItem = React.createClass({
         return <option key={merchOption} value={merchOption}>{merchOption}</option>;
       })
     );
-  },
+  }
 
-  display_MerchOptions: function()
+  display_MerchOptions()
   {
     return(
           <span className="input-group-addon select-group">
@@ -99,10 +104,10 @@ var MerchItem = React.createClass({
         </select>
       </span>
     );
-  },
+  }
 
 
-  render: function(){
+  render(){
 
     var Item = this.props.item;
     Item.is_soldout = (Item.is_soldout==="1"); //convert to Boolean
@@ -197,6 +202,6 @@ var MerchItem = React.createClass({
   </div>
     )
   }
-})
+}
 
 module.exports = MerchItem;
