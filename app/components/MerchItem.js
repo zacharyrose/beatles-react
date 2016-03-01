@@ -38,16 +38,26 @@ var hide={display:"none"};
 
 class MerchItem extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      hasOptions: false,
+      options: [],
+      selectedOption: ""
     };
+
+    if (!isEmpty(this.props.item.options))
+    {
+      this.state.hasOptions = true;
+      this.state.options = this.props.item.options.split("|");
+      this.state.selectedOption = this.state.options[0];
+    }
+
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.itemClick = this.itemClick.bind(this);
-    this.split_MerchOptions = this.split_MerchOptions.bind(this);
-    this.display_MerchOptions = this.display_MerchOptions.bind(this);
+    this.setOption = this.setOption.bind(this);
   }
 
   openModal(e) {
@@ -62,48 +72,18 @@ class MerchItem extends React.Component {
       name: this.props.item.info_title,
       price:this.props.item.info_price,
       type: this.props.item.info_price,
-      option: this.props.selectedOption
+      option: this.state.hasOptions ? this.state.selectedOption : null
     }
     this.props.callbackParent(cartInfo);
   }
 
   closeModal() {
-    this.setState({
-      modalIsOpen: false,
-      itemOptions: [],
-      selectedOption: ""
-    });
+    this.setState({modalIsOpen: false});
   }
 
-  split_MerchOptions()
+  setOption(e)
   {
-    var merchOptions = this.props.item.options.split("|");
-    /*
-    this.setState({itemOptions: merchOptions});
-    this.setState({selectedOption: this.state.itemOptions[0]});
-    */
-
-    //this.props.itemOptions = merchOptions;
-    //this.props.selectedOption = merchOptions[0];
-
-    console.log(merchOptions[0], typeof(merchOptions[0]));
-
-    return(
-        merchOptions.map(merchOption => {
-        return <option key={merchOption} value={merchOption}>{merchOption}</option>;
-      })
-    );
-  }
-
-  display_MerchOptions()
-  {
-    return(
-          <span className="input-group-addon select-group">
-        <select className="c-select select-item item_size">
-          {this.split_MerchOptions()}
-        </select>
-      </span>
-    );
+    this.setState({selectedOption: e.target.value});
   }
 
 
@@ -120,11 +100,6 @@ class MerchItem extends React.Component {
       var imagewidth = Math.round(  imageheight * ( Item.imagewidth / Item.imageheight)  );
       var modalDescStyle = {width: imagewidth, margin: "auto"};
     }
-
-    var merchOptionsElement="";
-
-    if (!isEmpty(Item.options))
-      { merchOptionsElement = ( this.display_MerchOptions() ) }
 
     var classes = classNames("merchitem","col-sm-12","col-md-6","col-lg-4","simpleCart_shelfItem", "type-"+Item.info_type, {"is_soldout":Item.is_soldout});
     return(
@@ -189,7 +164,17 @@ class MerchItem extends React.Component {
         <div className="input-group">
         <div className="input-group-addon price item_price">{Item.info_price}</div>
 
-          <Conditional if={!isEmpty(merchOptionsElement)}>{merchOptionsElement}</Conditional>
+          <Conditional if={this.state.hasOptions}>
+            <span className="input-group-addon select-group">
+            <select onChange={this.setOption} className="c-select select-item item_size">
+              {
+                  this.state.options.map((option, index) => {
+                  return <option key={index} value={option}>{option}</option>;
+                })
+              }
+            </select>
+            </span>
+          </Conditional>
 
         <div className="input-group-btn">
 

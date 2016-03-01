@@ -82,7 +82,7 @@ class Shop extends React.Component {
       {
         filteredItems.map( merchitem => {
           return (
-            <MerchItem key={merchitem.id} item={merchitem} selectedOption={""} callbackParent={this.addToCartFN} />
+            <MerchItem key={merchitem.id} item={merchitem} callbackParent={this.addToCartFN} />
           );
         })
 
