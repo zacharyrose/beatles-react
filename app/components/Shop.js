@@ -1,8 +1,8 @@
-var React = require('react');
-var jsondata = require('json!../../public/data.json');
-var MerchItem = require ('./MerchItem');
+import React from 'react';
 import { Link } from 'react-router';
-var classNames = require('classnames');
+import classNames from 'classnames';
+import jsondata from 'json!../../public/data.json';
+import MerchItem from './MerchItem'
 
 var paypal_style = {height: "2em"};
 var shopping_style = {height: "1.25em", marginRight:".5em"}
@@ -16,18 +16,21 @@ const links = {
   'Patches': '/store/:Patch'
 };
 
-var StoreComponent = React.createClass({
-  getInitialState: function (){
-    return {
+class Shop extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
       items : {}
     }
-  },
+    this.addToCartFN = this.addToCartFN.bind(this);
+  }
 
-  addToCartFN: function(e) {
+  addToCartFN(e) {
     console.log(e);
-  },
+  }
 
-  render: function(){
+  render(){
     var type;
     if (this.props.params.type === undefined)
     {
@@ -91,6 +94,6 @@ var StoreComponent = React.createClass({
 
     )
   }
-})
+}
 
-module.exports = StoreComponent;
+module.exports = Shop;

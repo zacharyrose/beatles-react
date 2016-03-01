@@ -1,9 +1,7 @@
-var React = require('react');
+import React from 'react';
 import { Link } from 'react-router';
 
-var Home = React.createClass({
-  render: function(){
-    return(
+const Home = () => (
       <article>
         <h1>Welcome to The Beatles fake website!</h1>
 
@@ -36,8 +34,6 @@ var Home = React.createClass({
         go with him, girl (anna) you&#39;re coming home, you&#39;re coming home you&#39;re going to lost that girl.
         </p>
       </article>
-    )
-  }
-})
+);
 
 module.exports = Home;

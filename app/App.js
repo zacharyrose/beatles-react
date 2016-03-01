@@ -1,8 +1,8 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Router = require('react-router').Router;
-var routes = require('./config/routes');
-import { browserHistory } from 'react-router';
+import React from 'react';
+import ReactDOM from 'react-dom'
+import { Router, browserHistory } from 'react-router'
+import routes from './config/routes';
+
 //import { createHistory } from 'history';
 //import createHistory from 'history/lib/createBrowserHistory'
 

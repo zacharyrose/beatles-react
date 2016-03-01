@@ -1,17 +1,16 @@
-var React = require('react');
-var Main = require('../components/Main');
-var Home = require('../components/Home');
-var Cart = require('../components/Cart');
-var StoreComponent = require('../components/StoreComponent');
-var Router = require('react-router');
-var Route = Router.Route;
-var IndexRoute = Router.IndexRoute;
+import React from 'react';
+import { Router, Route, IndexRoute } from 'react-router'
+
+import Main from '../components/Main';
+import Home from '../components/Home';
+import Cart from '../components/Cart';
+import Shop from '../components/Shop';
 
 module.exports = (
   <Route path="/" component={Main}>
     <IndexRoute component={Home} />
     <Route path="cart" component={Cart} />
-    <Route path="store" component={StoreComponent} />
-    <Route path="store/:type" component={StoreComponent} />
+    <Route path="store" component={Shop} />
+    <Route path="store/:type" component={Shop} />
   </Route>
 );
